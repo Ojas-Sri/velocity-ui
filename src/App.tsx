@@ -1,29 +1,16 @@
-import { Grommet, Grid, Box } from "grommet";
-import { AppHeader } from "./components/AppHeader";
-import { NewUserPage } from "./components/NewUserPage";
+import { Grommet } from "grommet";
 import { velocityTheme } from "./themes/velocity-theme";
+import { UserContextProvider, UserContext } from "./contexts/UserContext";
+import { MainGrid } from "./components/MainGrid";
 
-function App() {
+export const App: React.FC = () => {
   return (
     <Grommet theme={velocityTheme} full>
-      <Grid
-        fill
-        areas={[
-          { name: "header", start: [0, 0], end: [0, 0] },
-          { name: "main", start: [0, 1], end: [0, 1] },
-        ]}
-        rows={["auto", "flex"]}
-        columns={["flex"]}
-      >
-        <Box gridArea="header">
-          <AppHeader />
-        </Box>
-        <Box gridArea="main">
-          <NewUserPage />
-        </Box>
-      </Grid>
+      <UserContextProvider>
+        <MainGrid />
+      </UserContextProvider>
     </Grommet>
   );
-}
+};
 
 export default App;
