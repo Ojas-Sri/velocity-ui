@@ -1,25 +1,28 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { Grommet, Grid, Box } from "grommet";
+import { AppHeader } from "./components/AppHeader";
+import { NewUserPage } from "./components/NewUserPage";
+import { velocityTheme } from "./themes/velocity-theme";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Grommet theme={velocityTheme} full>
+      <Grid
+        fill
+        areas={[
+          { name: "header", start: [0, 0], end: [0, 0] },
+          { name: "main", start: [0, 1], end: [0, 1] },
+        ]}
+        rows={["auto", "flex"]}
+        columns={["flex"]}
+      >
+        <Box gridArea="header">
+          <AppHeader />
+        </Box>
+        <Box gridArea="main">
+          <NewUserPage />
+        </Box>
+      </Grid>
+    </Grommet>
   );
 }
 
